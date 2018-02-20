@@ -14,6 +14,7 @@ class Validator
         // permanent data store like Redis, etc. We will use it to determine
         // uniqueness.
         $presenceVerifier = $validator->getPresenceVerifier();
+        $presenceVerifier->setConnection($ruleParser->getConnection());
 
         return $presenceVerifier->getCount(
             $ruleParser->getTable(),
