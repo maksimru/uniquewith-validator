@@ -42,7 +42,7 @@ class RuleParser
         $this->parameters = array_map('trim', $this->parameters);
 
         // first item equals table name
-        list($connection, $table) = $this->parseTable(array_shift($parameters));
+        list($connection, $table) = $this->parseTable(array_shift($this->parameters));
         $this->table = $table;
         $this->connection = $connection;
 
