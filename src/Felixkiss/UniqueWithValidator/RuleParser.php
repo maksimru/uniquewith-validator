@@ -145,6 +145,9 @@ class RuleParser
         $lastParameter = array_map('trim', explode('=', $lastParameter));
 
         $this->ignoreValue = str_replace('ignore:', '', $lastParameter[0]);
+        // binary input support
+        if(substr($this->ignoreValue,0,4) == 'hex:')
+            $this->ignoreValue = hex2bin(substr($this->ignoreValue,4));
         $this->ignoreColumn = (sizeof($lastParameter) > 1) ? end($lastParameter) : null;
 
         // Shave of the ignore_id from the array for later processing
